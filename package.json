@@ -1,0 +1,19 @@
+{
+  "name": "cryptowallet",
+  "version": "1.0.0",
+  "description": "Class project : Do a Crypto Wallet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PierreAbeille/cryptoWallet.git"
+  },
+  "author": "PierreAbeille and ymarkuc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PierreAbeille/cryptoWallet/issues"
+  },
+  "homepage": "https://github.com/PierreAbeille/cryptoWallet#readme"
+}
