@@ -1,2 +1,0 @@
-# cryptoWallet
-Class project 
