@@ -21,6 +21,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #app {
@@ -38,6 +39,7 @@ body {
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  padding: 3vh 1vw;
 }
 
 #nav a.router-link-exact-active {
