@@ -22,4 +22,9 @@ console.log('ok')
         box-shadow: 0px 6px 11px -5px rgba(0,0,0,0.57);
     }
 
+    #nav a {
+        text-decoration: none;
+        margin: auto 3vw;
+    }
+
 </style>
