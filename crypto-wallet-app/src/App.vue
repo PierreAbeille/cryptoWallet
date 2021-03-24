@@ -1,14 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Nav/>
     <router-view/>
   </div>
 </template>
 
+<script>
+
+import Nav from '@/components/Nav.vue'
+
+export default {
+  components: {
+    Nav
+  }
+}
+</script>
+
 <style>
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,7 +32,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 3vh 3vw;
 }
 
 #nav a {
@@ -29,4 +43,5 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
