@@ -4,16 +4,19 @@
     <Nav/>
     <!-- Les composants correspondant aux routes utilisées par Nav sont rendu ici -->
     <router-view/>
+    <Wallet/>
   </div>
 </template>
 
 <script>
 
 import Nav from '@/components/Nav.vue'
+import Wallet from '@/components/Wallet.vue'
 
 export default {
   components: {
-    Nav
+    Nav,
+    Wallet
   }
 }
 </script>
