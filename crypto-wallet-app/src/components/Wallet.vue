@@ -20,11 +20,32 @@ export default {
 <style>
     .wallet {
         text-align: left;
-        width: 20vw;
-        height: 90vh;
+        -webkit-box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
+        -moz-box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
+        box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
         position: absolute;
-        top: 6vh;
+        bottom: 0;
         left: 0;
-        padding: 2vh 2vw;
+        right: 0;
+        background-color: #fff;
     }
+
+    h2 {
+        border-bottom: 3px solid #42b983;
+    }
+
+    @media screen and (min-width: 760px){
+        .wallet {
+            width: 20vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            padding: 0 2vw;
+        }
+
+        h2 {
+            padding : 2vh 2vw;
+        }
+    }
+
 </style>
