@@ -1,10 +1,14 @@
+// Déclaration de toutes les routes de l'app
+// Chaque composant est chargé au click mis à part home, qui est la page d'accueil
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
 const routes = [
   {
+    // Chemin de la page
     path: '/',
-    name: 'Home',
+    name: 'Market',
+    // Composant à charger. Ici il est importé directement dans le fichier, mais pour les autres pages, il est chargé lors de l'accès à la page.
     component: Home
   },
   {
@@ -16,21 +20,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/buy',
-    name: 'Buy',
-    component: () => import(/* webpackChunkName: "buy" */ '../views/Buy.vue')
-  },
-  {
-    path: '/sell',
-    name: 'Sell',
-    component: () => import(/* webpackChunkName: "sell" */ '../views/Sell.vue')
-  },
-  {
-    path: '/manage',
-    name: 'Manage',
-    component: () => import(/* webpackChunkName: "manage" */ '../views/Manage.vue')
+    path: '/boursicoter',
+    name: 'Bouricoter',
+    component: () => import(/* webpackChunkName: "buy" */ '../views/Boursicoter.vue')
   }
-
 ]
 
 const router = createRouter({

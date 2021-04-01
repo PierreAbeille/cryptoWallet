@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- Appel du composant Nav avec toute les routes -->
     <Nav/>
+    <!-- Les composants correspondant aux routes utilisées par Nav sont rendu ici -->
     <router-view/>
   </div>
 </template>

@@ -1,12 +1,12 @@
 <template>
-  <div class="manage">
-      <h1>WHERE IS MY MONEY</h1>
+  <div class="boursicoter">
+
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'Boursicoter'
 }
 </script>
 

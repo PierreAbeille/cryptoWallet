@@ -1,9 +1,8 @@
 <template>
     <div id="nav">
+      <!-- Chaque route est déclarée ici, '<router-link>' est ensuite rendu en lien '<a>' -->
       <router-link to="/">Accueil</router-link> |
-      <router-link to="/buy">Acheter</router-link> |
-      <router-link to="/sell">Vendre</router-link> |
-      <router-link to="/manage">Gestion</router-link> |
+      <router-link to="/boursicoter">Boursicoter</router-link> |
       <router-link to="/about">A propos</router-link>
     </div>
 </template>
@@ -12,7 +11,6 @@
 export default {
   name: 'Nav'
 }
-console.log('ok')
 </script>
 
 <style>
