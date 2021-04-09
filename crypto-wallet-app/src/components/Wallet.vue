@@ -30,6 +30,10 @@ export default {
         background-color: #fff;
     }
 
+    ul {
+        padding: 0;
+    }
+
     h2 {
         border-bottom: 3px solid #42b983;
     }

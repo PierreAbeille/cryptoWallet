@@ -32,6 +32,8 @@ export default {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 
   #app {
