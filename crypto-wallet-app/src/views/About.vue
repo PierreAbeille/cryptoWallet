@@ -20,8 +20,6 @@
       <span>Culpa quis laudantium, aliquid blanditiis sequi explicabo fugiat incidunt, magni consequuntur provident ut atque voluptas a expedita impedit velit obcaecati adipisci non illo asperiores animi? Fugiat eos rerum ratione velit.</span>
       <span>Impedit, nesciunt. Vero, dolorum. Magni, cum, reiciendis doloribus deleniti earum vero error fugit suscipit, autem exercitationem dolorum. Id omnis enim ullam accusantium magnam, deleniti illum, minus rem expedita accusamus pariatur?</span>
       <span>Voluptatibus, numquam? Eum odit earum cumque, quibusdam deserunt a nulla aliquam fuga minus nesciunt culpa illo nam dolorem aut similique dignissimos alias! Quidem expedita ad dicta minus labore error veniam?</span>
-      <span>Ab voluptate excepturi quos magni distinctio et natus laboriosam itaque a. Quidem dicta consequuntur eveniet omnis quod earum quis praesentium, tempora adipisci, deleniti laudantium veniam repellendus soluta sed id cupiditate!</span>
-      <span>Pariatur, quia! Sunt provident non tempora incidunt amet obcaecati commodi perspiciatis velit quo ducimus nesciunt consequuntur architecto cumque, minus fugit voluptatum laborum temporibus beatae ipsum. Cum, sed maxime! Rem, sint?</span>
     </p>
   </div>
 </template>
@@ -33,4 +31,19 @@ export default {
 </script>
 
 <style>
+  .about {
+    padding : 2vh 2vw;
+  }
+
+    @media screen and (min-width: 760px){
+    .about {
+      height: 80vh;
+      width : 60vw;
+      margin: auto;
+      margin-right: 5vw;
+      /* border: 1px solid #CCC; */
+      border-radius: 50px;
+      padding: 3vh 3vw;
+    }
+  }
 </style>

@@ -3,6 +3,7 @@
     <!-- Appel du composant Nav avec toute les routes -->
     <Nav/>
     <!-- Les composants correspondant aux routes utilisées par Nav sont rendu ici -->
+    <!-- <router-view/> -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />

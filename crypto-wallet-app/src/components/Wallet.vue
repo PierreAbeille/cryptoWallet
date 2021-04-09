@@ -23,7 +23,7 @@ export default {
         -webkit-box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
         -moz-box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
         box-shadow: 17px 0px 18px -16px rgba(0,0,0,0.27);
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         right: 0;

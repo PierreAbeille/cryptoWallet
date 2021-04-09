@@ -16,13 +16,14 @@ export default {
 <style>
 
     #nav {
-      -webkit-box-shadow: 0px 37px 33px -35px rgba(0,0,0,0.34);
-      -moz-box-shadow: 0px 37px 33px -35px rgba(0,0,0,0.34);
-      box-shadow: 0px 37px 33px -35px rgba(0,0,0,0.34);
+      -webkit-box-shadow: 0px 10px 26px -16px rgba(0,0,0,0.64);
+      -moz-box-shadow: 0px 10px 26px -16px rgba(0,0,0,0.64);
+      box-shadow: 0px 10px 26px -16px rgba(0,0,0,0.64);
       padding: 2vh 2vw;
       font-size: 0.8em;
       text-align: center;
       background-color: #fff;
+      /* border : 1px solid #CCC; */
     }
 
     #nav a.router-link-exact-active {
@@ -40,8 +41,8 @@ export default {
       #nav {
         width : 60vw;
         margin: 1vh auto;
-        margin-right: 10vh;
-        border-radius : 50px;
+        margin-right: 5vw;
+        border-radius : 40px;
         padding: 3vh 3vw;
         font-size: 1.2em;
       }
