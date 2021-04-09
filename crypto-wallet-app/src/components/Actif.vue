@@ -1,10 +1,10 @@
 <template>
   <div class="actif">
-      <ul id="listeActif">
+      <ul>
         <!-- Ici, utiliser v-for pour intégrer nom de crypto et montant détenu -->
-        <li>
-          <h3> NomCrypto: {{rsp[0]}} </h3><br>
-          Montant: {{rsp[0]}}
+        <li v-for="response in rsp">
+          <h3>{{response.actif}}</h3><br>
+          Montant: {{response.total}} unités
         </li>
       </ul>
       <!-- <h3>Monnaie x</h3>
