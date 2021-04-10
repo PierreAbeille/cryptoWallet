@@ -93,6 +93,11 @@ app.post('/withdraw', jsonParser, function(req, res){
 	})
 })
 
+app.post('/test', jsonParser, function(req, res){
+	console.log(req.body);
+	res.json({status:'ok'})
+})
+
 app.post('/deposit', function(req, res){
 	con.query("insert into wallets values('"+req.body.asset+"','"+req.body.value+"',NOW());",function(err, result){
 		if (err) throw err;
