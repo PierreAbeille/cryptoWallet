@@ -1,7 +1,7 @@
 <template>
   <div class="boursicoter">
-    <p>Nom de l'actif choisi : {{rsp[0].actif}}</p>
-    <p>Nombre d'actifs : {{rsp[0].total}}</p>
+    <p v-if="dataReady">Nom de l'actif choisi : {{rsp[0].actif}}</p>
+    <p v-if="dataReady">Nombre d'actifs : {{rsp[0].total}}</p>
   </div>
 </template>
 
@@ -13,15 +13,16 @@ export default {
   name: 'boursicoter',
   data: () => ({
     error: '',
-    rsp: []
+    rsp: [],
+    dataReady: false
   }),
 
-  mounted () {
-    fetch(api)
+  async mounted () {
+    // Toutes les opérations à effectuer
+    const query = await fetch(api)
       .then(response => response.json())
-      .then(result => {
-        this.rsp = result
-      })
+    this.rsp = query
+    this.dataReady = true
   },
   methods: {}
 }

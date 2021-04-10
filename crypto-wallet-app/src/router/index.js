@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/boursicoter',
-    name: 'Bouricoter',
+    name: 'Boursicoter',
     component: () => import(/* webpackChunkName: "buy" */ '../views/Boursicoter.vue')
   }
 ]

@@ -1,30 +1,27 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <p>{{rsp.message}}</p>
+    <p v-if="dataReady">{{rsp.message}}</p>
   </div>
 </template>
 
 <script>
-// // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 
-console.log('salut')
 const api = 'http://localhost:3000/home'
 
 export default {
   name: 'home',
   data: () => ({
     error: '',
-    rsp: []
+    rsp: [],
+    dataReady: false
   }),
 
-  mounted () {
-    fetch(api)
+  async mounted () {
+    const query = await fetch(api)
       .then(response => response.json())
-      .then(result => {
-        this.rsp = result
-      })
+    this.rsp = query
+    this.dataReady = true
   },
   methods: {}
 }
