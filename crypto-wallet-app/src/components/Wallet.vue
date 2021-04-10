@@ -41,10 +41,13 @@ export default {
     @media screen and (min-width: 760px){
         .wallet {
             width: 20vw;
-            height: 100vh;
+            height: 100%;
             top: 0;
             left: 0;
             padding: 0 2vw;
+            /* -webkit-box-shadow: 0px -5px 18px -16px rgba(0,0,0,0.27);
+            -moz-box-shadow: 0px -5px 18px -16px rgba(0,0,0,0.27);
+            box-shadow: 0px -5px 18px -16px rgba(0,0,0,0.27); */
         }
 
         h2 {

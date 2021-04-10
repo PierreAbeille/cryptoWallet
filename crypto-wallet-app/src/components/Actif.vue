@@ -5,8 +5,7 @@
         <!-- Dans le cas ci-dessous on itère sur 'rsp', le résultat en json de la requête à l'api -->
         <!-- item correspond à l'objet sur lequel on se situe, i étant l'index. La clé est important pour pouvoir itérer sur des objets uniques -->
         <li v-for="(item, i) in rsp" :key="i">
-          <h3>{{item.actif}}</h3>
-          {{item.total}} unités
+          <strong>{{item.actif}}</strong> {{item.total}} unités
         </li>
       </ul>
   </div>
@@ -47,5 +46,8 @@ export default {
   li {
     list-style: none;
     border-bottom: 1px solid #ccc;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-between;
   }
 </style>

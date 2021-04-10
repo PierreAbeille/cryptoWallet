@@ -30,7 +30,7 @@ app.get('/home', function (req, res){
 app.get('/allwallets', function(req, res){
 	con.query("SELECT actif, SUM(nombre_actifs) as total FROM wallets GROUP BY actif;",function(err, result){
 		if (err) throw err;
-		res.json(result)		
+		res.json(result)
 	})
 })
 
