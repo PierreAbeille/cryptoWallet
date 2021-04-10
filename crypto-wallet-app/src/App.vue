@@ -7,8 +7,11 @@
       <!-- Les composants correspondant aux routes utilisées par Nav sont rendu ici -->
       <!-- <router-view/> -->
       <div id="pages--content">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
+        <router-view v-slot="{ Component, route }">
+          <transition
+            :enter-active-class="route.meta.enterClass"
+            :leave-active-class="route.meta.leavClass"
+          >
             <component :is="Component" />
           </transition>
       </router-view>
@@ -72,7 +75,7 @@ export default {
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.5s ease-out;
+    transition: opacity 1s ease-out;
   }
 
   @media screen and (min-width: 760px){

@@ -39,6 +39,7 @@ export default {
 
 <style scoped>
   .actif {
+      margin-top: 2vh;
       text-align: justify;
       padding: 2vh auto;
   }

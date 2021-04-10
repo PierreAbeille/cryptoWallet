@@ -51,7 +51,7 @@ export default {
         }
 
         h2 {
-            padding : 2vh 2vw;
+            padding : 2vh 2vw 1vh;
         }
     }
 
