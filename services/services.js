@@ -30,7 +30,7 @@ app.get('/allwallets', function(req, res){
 	con.query("SELECT actif, SUM(nombre_actifs) as total FROM wallets GROUP BY actif;",function(err, result){
 		if (err) throw err;
 		console.log(result[0])
-		res.json(result)		
+		res.json(result)
 	})
 })
 
@@ -91,11 +91,6 @@ app.post('/withdraw', jsonParser, function(req, res){
 		if (err) throw err;
 		res.json(result)		
 	})
-})
-
-app.post('/test', jsonParser, function(req, res){
-	console.log(req.body);
-	res.json({status:'ok'})
 })
 
 app.post('/deposit', function(req, res){

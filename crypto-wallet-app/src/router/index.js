@@ -9,7 +9,11 @@ const routes = [
     path: '/',
     name: 'Market',
     // Composant à charger. Ici il est importé directement dans le fichier, mais pour les autres pages, il est chargé lors de l'accès à la page.
-    component: Home
+    component: Home,
+    meta: {
+      enterClass: 'animate__animated animate__fadeInUp',
+      leaveClass: 'animate__animated animate__fadeOutRight'
+    }
   },
   {
     path: '/about',
@@ -17,12 +21,20 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: {
+      enterClass: 'animate__animated animate__fadeInUp',
+      leaveClass: 'animate__animated animate__fadeOutRight'
+    }
   },
   {
     path: '/boursicoter',
-    name: 'Boursicoter',
-    component: () => import(/* webpackChunkName: "buy" */ '../views/Boursicoter.vue')
+    name: 'Bouricoter',
+    component: () => import(/* webpackChunkName: "buy" */ '../views/Boursicoter.vue'),
+    meta: {
+      enterClass: 'animate__animated animate__fadeInUp',
+      leaveClass: 'animate__animated animate__fadeOutRight'
+    }
   }
 ]
 

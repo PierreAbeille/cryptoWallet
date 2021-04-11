@@ -33,19 +33,4 @@ export default {
 </script>
 
 <style>
-  .about {
-    padding : 2vh 2vw;
-  }
-
-    @media screen and (min-width: 760px){
-    .about {
-      height: 80vh;
-      width : 60vw;
-      margin: auto;
-      margin-right: 5vw;
-      /* border: 1px solid #CCC; */
-      border-radius: 50px;
-      padding: 3vh 3vw;
-    }
-  }
 </style>

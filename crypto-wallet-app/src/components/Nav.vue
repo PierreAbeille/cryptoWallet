@@ -39,9 +39,8 @@ export default {
 
     @media screen and (min-width: 760px) {
       #nav {
-        width : 60vw;
+        width : 100%;
         margin: 1vh auto;
-        margin-right: 5vw;
         border-radius : 40px;
         padding: 3vh 3vw;
         font-size: 1.2em;

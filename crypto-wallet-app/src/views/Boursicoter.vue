@@ -49,14 +49,14 @@ export default {
       if (form.achat) {
         // requete pour achat
         // a remplacer par une requête adéquate
-        const response = await axios.post('/test', form)
+        const response = await axios.post('/deposit', form)
         console.log(response)
         console.log('acheter')
         console.log(form)
       } else {
         // requete pour vendre
         // a remplacer par une requête adéquate
-        const response = await axios.post('/test', form)
+        const response = await axios.post('/withdraw', form)
         console.log(response)
         console.log('vendre')
         console.log(form)
@@ -67,19 +67,5 @@ export default {
 </script>
 
 <style>
-  .boursicoter {
-    padding : 2vh 2vw;
-  }
 
-    @media screen and (min-width: 760px){
-    .boursicoter {
-      height: 80vh;
-      width : 60vw;
-      margin: auto;
-      margin-right: 5vw;
-      /* border: 1px solid #CCC; */
-      border-radius: 50px;
-      padding: 3vh 3vw;
-    }
-  }
 </style>
