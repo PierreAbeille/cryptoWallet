@@ -12,7 +12,7 @@ const routes = [
     component: Home,
     meta: {
       enterClass: 'animate__animated animate__fadeInUp',
-      leaveClass: 'animate__animated animate__fadeOutDown'
+      leaveClass: 'animate__animated animate__fadeOutRight'
     }
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     meta: {
       enterClass: 'animate__animated animate__fadeInUp',
-      leaveClass: 'animate__animated animate__fadeOutDown'
+      leaveClass: 'animate__animated animate__fadeOutRight'
     }
   },
   {
@@ -33,7 +33,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "buy" */ '../views/Boursicoter.vue'),
     meta: {
       enterClass: 'animate__animated animate__fadeInUp',
-      leaveClass: 'animate__animated animate__fadeOutDown'
+      leaveClass: 'animate__animated animate__fadeOutRight'
     }
   }
 ]

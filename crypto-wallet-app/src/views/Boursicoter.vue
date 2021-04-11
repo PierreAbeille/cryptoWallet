@@ -45,14 +45,14 @@ export default {
       if (form.achat) {
         // requete pour achat
         // a remplacer par une requête adéquate
-        const response = await axios.post('/test', form)
+        const response = await axios.post('/deposit', form)
         console.log(response)
         console.log('acheter')
         console.log(form)
       } else {
         // requete pour vendre
         // a remplacer par une requête adéquate
-        const response = await axios.post('/test', form)
+        const response = await axios.post('/withdraw', form)
         console.log(response)
         console.log('vendre')
         console.log(form)

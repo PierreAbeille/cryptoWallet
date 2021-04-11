@@ -12,9 +12,9 @@
     </div>
     <div class="tradeSelection">
       <!-- Champ pour définir le nombre d'unité que l'on souahaite échanger -->
-      <input type="number" name="" id="" v-model="form.unites">
+      <input type="number" name="" id="" v-model="form.value">
       <!-- Champ pour définir quel actif on souhaite échanger -->
-      <select name="" id="" v-model="form.select">
+      <select name="" id="" v-model="form.asset">
         <!-- L'utilisation du v-for permet de définir dans les champs sélectibles les cryptos de la bdd -->
         <option v-for="(item, i) in listeCrypto" :key="i" :value="item.actif">{{item.actif}}</option>
       </select>
@@ -146,6 +146,7 @@ export default {
   .tradeSelection input[type="number"] {
     width: 100%;
     border-radius: 5px 0 0 5px;
+    padding: 15px 10px;
   }
 
   .tradeSelection input[type="number"]:focus, .tradeSelection select:focus {
@@ -155,6 +156,10 @@ export default {
 
   form input[type="submit"]{
     width: 100%;
+  }
+
+  form input[type="submit"]:focus{
+    outline: none;
   }
 
 </style>
