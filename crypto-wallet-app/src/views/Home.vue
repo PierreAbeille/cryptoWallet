@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <p>{{rsp.message}}</p>
     <p>
       <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sapiente, iure tempore ipsa voluptatibus possimus, fugit earum inventore aspernatur odit aliquam perferendis tenetur sunt assumenda ad minima deserunt molestias mollitia!</span>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-console.log('salut')
+
 const api = 'http://localhost:3000/home'
 
 export default {
@@ -34,15 +35,15 @@ export default {
 
   data: () => ({
     error: '',
-    rsp: []
+    rsp: [],
+    dataReady: false
   }),
 
-  mounted () {
-    fetch(api)
+  async mounted () {
+    const query = await fetch(api)
       .then(response => response.json())
-      .then(result => {
-        this.rsp = result
-      })
+    this.rsp = query
+    this.dataReady = true
   },
   methods: {}
 }

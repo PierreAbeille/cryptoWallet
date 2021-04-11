@@ -25,8 +25,12 @@ export default {
 
   data: () => ({
     error: '',
-    rsp: []
+    rsp: [],
+    dataReady: false
   }),
+
+
+
   // En utilisant axios l'appel de l'api est plus rapide et lisible
   // Utilisation de async obligatoire avec await. Il s'agit d'une fonction asynchrone
   async mounted () {

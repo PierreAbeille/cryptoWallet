@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
+
     <p>
       <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse placeat dolorum. Laboriosam fugiat molestiae temporibus vel quidem harum nesciunt reprehenderit eaque. Hic voluptatibus iste placeat mollitia est aliquid. Voluptatum.</span>
       <span>Neque nisi minima voluptates ratione beatae iure sed cupiditate unde illo aperiam dicta earum, velit perspiciatis labore dolor alias tempora architecto dolore. Minus quo nulla reiciendis deserunt. Voluptatibus, quidem itaque?</span>
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'About'
 }
