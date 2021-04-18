@@ -1,5 +1,7 @@
 <template>
   <div class="boursicoter">
+    <div class="chart">
+    </div>
     <!-- @sendForm est une classe personnalisée -->
     <!-- Elle permet de passer en parametre du composant une fonction du parent-->
     <!-- listeCrypto correspond à l'objet json crée par la reqûete effectué dans ce composant  -->
@@ -28,8 +30,6 @@ export default {
     rsp: [],
     dataReady: false
   }),
-
-
 
   // En utilisant axios l'appel de l'api est plus rapide et lisible
   // Utilisation de async obligatoire avec await. Il s'agit d'une fonction asynchrone
