@@ -57,7 +57,6 @@ const getCoinByName = async(name) => {
 }
 
 const getHistoricByName = async(name, date1, to) => {
-
 	let coin = await getCoinByName(name)
 	let data = await CoinGeckoClient.coins.fetchMarketChartRange(coin.id, {
 		vs_currency: 'eur',
@@ -72,6 +71,7 @@ const getAllHistoricByName = async(name) => {
 	let coin = await getCoinByName(name)
 	let data = await CoinGeckoClient.coins.fetchMarketChart(coin.id, {
 		vs_currency: 'eur',
+		//Ici pour l'exercice, je récupère les données de la dernière année mais en réalité je peux mettre autant de jours que je veux
 		days: '365'
 	})
 	return data
@@ -108,78 +108,96 @@ app.delete('/deletewallet', function(req, res){
 })
 
 app.get('/graphique/:asset', async function(req,res){
-
-	if(req.params.asset === 'all'){
-		con.query("SELECT actif, SUM(nombre_actifs) as total, date FROM wallets WHERE (`date`) BETWEEN DATE('2000-01-01') AND DATE(NOW()) GROUP BY date, actif",function(err, result){
-			if (err) throw err;
-			for(let i=0; i<result.length; i++){
-				result[i].date = result[i].date.toJSON()
-			}
-			console.log(result)
-			
-			res.json(result)		
-		})
-	}else{
 		con.query("SELECT actif, SUM(nombre_actifs) as Total, date FROM wallets WHERE actif='"+req.params.asset+"' AND (`date`) BETWEEN DATE('2000-01-01') AND DATE(NOW()) GROUP BY date",async function(err, result){
-			if (err) throw err;
-			let length = result.length-1
+			
+			try{
+				if (err) throw err;
+				let length = result.length-1
 
-			//Permet de passer les données en JSON, sinon express ne les reconnait pas
-			for(let i=0; i<result.length; i++){
-				result[i].date = result[i].date.toJSON()
-			}
-		
-			let data = await getAllHistoricByName(req.params.asset)
-			let datechanger = new Date(data.data.prices[0][0]).toJSON().substring(0,10)
-			let dateboucle = result[0]
-			let stockasset = []
-			let stock = 0
-			let tabprix = []
-			for(let i=0; i< result.length; i++){
-				dateboucle = result[i].date.substring(0,10)
-				for(let j=0; j < data.data.prices.length ; j++){
-					datechanger = new Date(data.data.prices[j][0]).toJSON().substring(0,10)
-					if (datechanger === dateboucle) {
-						stock+= result[i].Total
-						stockasset.push(stock) // Permet d'ajouter les assets entre eux
-						tabprix.push(data.data.prices[j][1])
+				//Permet de passer les données en JSON, sinon express ne les reconnait pas
+				for(let i=0; i<result.length; i++){
+					result[i].date = result[i].date.toJSON()
+				}
+
+				//Récupérer la monnaie et son historique
+				let data = await getAllHistoricByName(req.params.asset)
+
+				/*Toute cette fonction permet de vérifier que le jour passé dans la requête SQL correspond
+				bien à au moins un jour corresponant à l'historique
+				En gros si ma requête SQL est au 01/01/2020 et que la fonction retourne une date au 01//01/20,
+				elle va ajouter le prix de la monnaie au jour J dans un tableau
+				*/
+				let datechanger = new Date(data.data.prices[0][0]).toJSON().substring(0,10)
+				let dateboucle = result[0]
+				let stockasset = []
+				let stock = 0
+				let tabprix = []
+				for(let i=0; i< result.length; i++){
+					dateboucle = result[i].date.substring(0,10)
+					for(let j=0; j < data.data.prices.length ; j++){
+						datechanger = new Date(data.data.prices[j][0]).toJSON().substring(0,10)
+						if (datechanger === dateboucle) {
+							stock+= result[i].Total
+							stockasset.push(stock) // Permet d'ajouter les assets entre eux
+							tabprix.push(data.data.prices[j][1])
+						}
 					}
 				}
-			}
-			let prixcomplet = []
-			let stockfinal = []
-			let varloop = 0
-			//Les dates permettent de loop au sein d'une date
-			let date1 = new Date(result[0].date)
-			let date2 = new Date(result[length].date)
-			for(date1 ; date1 <= date2 ; date1.setDate(date1.getDate() +1)){
-				for(let i=0 ; i < data.data.prices.length; i++){
-					let date = new Date(data.data.prices[i][0]).toJSON().substring(0,10)
-					if (date === date1.toJSON().substring(0,10)){
-						prixcomplet.push(data.data.prices[i][1])
 
+
+				let prixcomplet = []
+				let varloop = 0
+
+				//Les dates permettent de loop au sein d'une date
+				let date1 = new Date(result[0].date)
+				let date2 = new Date()
+				let tabajouter = {}
+
+				//Tab X-Y -> Tableau créé spécialement pour l'API de graphique qui marche avec des axes X et Y (normal quoi)
+				let tabxy = []
+
+				//Ce for avec les 2 dates au dessus boucle du jour de la première requête SQL jusqu'à aujourd'hui, y compris les
+				//jours non compris dans la requête SQL
+				for(date1 ; date1 <= date2 ; date1.setDate(date1.getDate() +1)){		
+					//Comme on loop dans une date, on n'a pas accès à un valeur[i], j'ai donc ajouté une variable,
+					//"varloop" qui permet de boucler comme dans une boucle
+					//Mais comme ma requête SQL peut être plus courte que le nombre de jours passés, le varloop s'avère utile
+					//Pour ajouter à chaque fois la dernière somme utilisée si jamais on n'a pas de jour correspondant en SQL
+					for(let i=0 ; i < data.data.prices.length; i++){
+						let date = new Date(data.data.prices[i][0]).toJSON().substring(0,10)
+						if (date === date1.toJSON().substring(0,10)){
+							//Permet d'ajouter tous les prix du jour 1 au jour J dans un tableau en faisant une double boucle
+							//Dans la requête de l'API et dans la boucle (date1 - date3)
+							prixcomplet.push(data.data.prices[i][1])
+						}
 					}
+					if (varloop<result.length) { //Permet de vérifier qu'on est dans la requête
+						if (date1.toJSON() == result[varloop].date) {
+							tabajouter = {x: date1, y:stockasset[varloop]}
+							tabxy.push(tabajouter)
+							varloop+=1
+						}
+						else {
+							varloop-=1
+							tabajouter = {x: date1, y:stockasset[varloop]}
+							tabxy.push(tabajouter)
+							varloop+=1
+						}
+					}else{  //Ajoute le dernier prix connu pour avoir un graphique complet
+						tabajouter = {x: date1, y:stockasset[varloop-1]}
+						tabxy.push(tabajouter)
+					}
+					
 				}
-				if (date1.toJSON() == result[varloop].date) {
-					stockfinal.push(stockasset[varloop])
-					varloop+=1
-				}
-				else {
-					varloop-=1
-					stockfinal.push(stockasset[varloop])
-					varloop+=1
-				}
+				//Et ça c'est pour multiplier le nombre d'actifs que j'ai par son prix au jour J
+				for (let i = 0; i<tabxy.length ; i++) {
+					tabxy[i].y *=prixcomplet[i]
+				}	
+				res.json(tabxy)
+			}catch(error){
+				console.log(error)
 			}
-			let resultfinal =[]
-			for(let i=0 ; i<stockfinal.length; i++){
-				resultfinal.push(stockfinal[i]*prixcomplet[i])
-			}
-			result.push(resultfinal)
-			res.json(result)
-
-		})
-	}
-	
+		})			
 })
 
 http.listen(port, function(){
