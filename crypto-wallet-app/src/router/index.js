@@ -7,7 +7,7 @@ const routes = [
   {
     // Chemin de la page
     path: '/',
-    name: 'Market',
+    name: 'Home',
     // Composant à charger. Ici il est importé directement dans le fichier, mais pour les autres pages, il est chargé lors de l'accès à la page.
     component: Home,
     meta: {

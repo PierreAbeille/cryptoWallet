@@ -1,11 +1,15 @@
+/* eslint-disable */
 <template>
   <div class="home">
+    <h1>Evolution de votre portefeuille</h1>
     <div class="chart">
     </div>
   </div>
 </template>
 
 <script>
+// /* eslint-disable */
+// import HomeChart from '@/components/HomeChart'
 
 const api = 'http://localhost:3000/home'
 
@@ -29,6 +33,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  h1 {
+    margin-bottom: 5vh;
+  }
 </style>

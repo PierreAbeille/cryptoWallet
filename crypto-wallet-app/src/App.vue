@@ -95,6 +95,6 @@ export default {
   .chart {
     border: 1px solid #000;
     height: 50vh;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
   }
 </style>
