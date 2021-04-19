@@ -1,5 +1,8 @@
 <template>
   <div class="boursicoter">
+    <h1>Evolution des cryptos par rapport au dollar</h1>
+    <div class="chart">
+    </div>
     <!-- @sendForm est une classe personnalisée -->
     <!-- Elle permet de passer en parametre du composant une fonction du parent-->
     <!-- listeCrypto correspond à l'objet json crée par la reqûete effectué dans ce composant  -->
@@ -29,8 +32,6 @@ export default {
     dataReady: false
   }),
 
-
-
   // En utilisant axios l'appel de l'api est plus rapide et lisible
   // Utilisation de async obligatoire avec await. Il s'agit d'une fonction asynchrone
   async mounted () {
@@ -48,14 +49,12 @@ export default {
       // 'achat' est un objet de form dans le composant cible (@/components/BoursForm.vue)
       if (form.achat) {
         // requete pour achat
-        // a remplacer par une requête adéquate
         const response = await axios.post('/deposit', form)
         console.log(response)
         console.log('acheter')
         console.log(form)
       } else {
         // requete pour vendre
-        // a remplacer par une requête adéquate
         const response = await axios.post('/withdraw', form)
         console.log(response)
         console.log('vendre')
@@ -66,6 +65,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  h1 {
+    margin-bottom: 5vh;
+  }
 </style>

@@ -50,7 +50,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    height: 100vh;
+    height: 99vh;
     /* display: flex; */
     text-align: justify;
   }
@@ -90,5 +90,11 @@ export default {
         /* display: flex;
         flex-direction: column; */
       }
+  }
+
+  .chart {
+    border: 1px solid #000;
+    height: 50vh;
+    margin-bottom: 5vh;
   }
 </style>
