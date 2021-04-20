@@ -1,11 +1,14 @@
 <template>
   <div class="homeChart">
-    <apexchart height="100%" type="line" :options="options" :series="series"></apexchart>
+    <form @submit.prevent="loadCrypto">
+      <select name="" id="" v-model="asset">
+        <!-- L'utilisation du v-for permet de définir dans les champs sélectibles les cryptos de la bdd -->
+        <option v-for="(item, i) in allWallets" :key="i" :value="item.actif">{{item.actif}}</option>
+      </select>
+      <input type="submit" value="Valider">
+    </form>
+    <apexchart height="100%" type="line" :options="options" :series="series" id="thisComponentChart"></apexchart>
   </div>
-<!-- <select name="" id="" v-model="asset"> -->
-<!-- L'utilisation du v-for permet de définir dans les champs sélectibles les cryptos de la bdd -->
-<!-- <option v-for="(item, i) in allwallets" :key="i" :value="item.actif">{{item.actif}}</option> -->
-<!-- </select> -->
 </template>
 
 <script>
@@ -26,7 +29,15 @@ export default {
         },
 				yaxis: {
 					forceNiceScale: true,
-					decimalsInFloat: 2
+					decimalsInFloat: 2,
+					labels: {
+            formatter: function (val) {
+              return (val / 1000).toFixed(0);
+            }
+					},
+					title: {
+						text: 'Prix en Milliers d\'euros'
+						}
 				},
 				zoom: {
         	type: 'x',
@@ -37,27 +48,65 @@ export default {
           autoSelected: 'zoom'
         },
 				colors: ['#42b983'],
+				noData: {
+    			text: 'Chargement de vos données'
+  			}
       },
 			series: [{
-					name: 'BTC',
+					name: '',
 					data: []
 			}],
+			asset: '',
 			allWallets: []
     }
   },
 
 	async mounted () {
-		const response = await axios.get('/graphique/eth')
-		this.series = [{data : response.data}]
-
 		const aWallets = await axios.get('/allwallets')
 		this.allWallets = aWallets.data
-	}
+	},
+
+	methods: {
+		async loadCrypto () {
+			const response = await axios.get('/graphique/'+this.asset.toLowerCase())
+			this.series = [{data : response.data}]
+		}
+	},
 }
 </script>
 
 <style>
 	.homeChart {
 		height: 100%;
+	}
+
+	form {
+		height: 30%;
+		margin-bottom: 1vh;
+	}
+
+	select {
+    width: 100%;
+    border-radius: 5px;
+		padding: 0.7vh 0;
+		margin-bottom: 2vh;
+  }
+
+	input[type="submit"] {
+		width: 100%;
+		cursor: pointer;
+		border: none;
+    border-radius: 5px;
+    background-color: #42b983;
+    color: #fff;
+    padding: 
+		1vh 0;
+	}
+
+	#thisComponentChart {
+		-webkit-box-shadow: 0px 5px 8px -5px rgba(0,0,0,0.65);
+    -moz-box-shadow: 0px 5px 8px -5px rgba(0,0,0,0.65);
+    box-shadow: 0px 5px 8px -5px rgba(0,0,0,0.65);
+		border-radius: 5px;
 	}
 </style>
