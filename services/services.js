@@ -155,7 +155,7 @@ app.get('/graphique/:asset', async function(req,res){
 
 				//Tab X-Y -> Tableau créé spécialement pour l'API de graphique qui marche avec des axes X et Y (normal quoi)
 				let tabxy = []
-
+				
 				//Ce for avec les 2 dates au dessus boucle du jour de la première requête SQL jusqu'à aujourd'hui, y compris les
 				//jours non compris dans la requête SQL
 				for(date1 ; date1 <= date2 ; date1.setDate(date1.getDate() +1)){		
@@ -173,18 +173,18 @@ app.get('/graphique/:asset', async function(req,res){
 					}
 					if (varloop<result.length) { //Permet de vérifier qu'on est dans la requête
 						if (date1.toJSON() == result[varloop].date) {
-							tabajouter = {x: date1, y:stockasset[varloop]}
+							tabajouter = {x: new Date(date1), y:stockasset[varloop]}
 							tabxy.push(tabajouter)
 							varloop+=1
 						}
 						else {
 							varloop-=1
-							tabajouter = {x: date1, y:stockasset[varloop]}
+							tabajouter = {x: new Date(date1), y:stockasset[varloop]}
 							tabxy.push(tabajouter)
 							varloop+=1
 						}
 					}else{  //Ajoute le dernier prix connu pour avoir un graphique complet
-						tabajouter = {x: date1, y:stockasset[varloop-1]}
+						tabajouter = {x: new Date(date1), y:stockasset[varloop-1]}
 						tabxy.push(tabajouter)
 					}
 					
