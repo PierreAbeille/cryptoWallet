@@ -2,42 +2,56 @@
   <div class="homeChart">
     <apexchart height="100%" type="line" :options="options" :series="series"></apexchart>
   </div>
+<!-- <select name="" id="" v-model="asset"> -->
+<!-- L'utilisation du v-for permet de définir dans les champs sélectibles les cryptos de la bdd -->
+<!-- <option v-for="(item, i) in allwallets" :key="i" :value="item.actif">{{item.actif}}</option> -->
+<!-- </select> -->
 </template>
 
 <script>
 /* eslint-disable */
 import VueApexCharts from 'vue3-apexcharts'
 import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3000'
 
 export default {
-	url : 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=eur&days=14&interval=daily',
-
   data () {
     return {
       options: {
         chart: {
-          id: 'homechart',
-					toolbar: {
-						show: false
-					}
+          id: 'homechart'
         },
-        // xaxis: {
-        //   type: 'category'
-        // },
+        xaxis: {
+          type: 'datetime'
+        },
+				yaxis: {
+					forceNiceScale: true,
+					decimalsInFloat: 2
+				},
+				zoom: {
+        	type: 'x',
+          enabled: true,
+          autoScaleYaxis: true
+        },
+        toolbar: {
+          autoSelected: 'zoom'
+        },
 				colors: ['#42b983'],
       },
 			series: [{
+					name: 'BTC',
 					data: []
-			}]
+			}],
+			allWallets: []
     }
   },
 
 	async mounted () {
-		const response = await axios.get(this.url)
-		// 	data: response.prices[1]
-		// this.series =[{
-  	// 	data: [{x: response.prices[0], y: response.prices[1]}]
-		// }]
+		const response = await axios.get('/graphique/eth')
+		this.series = [{data : response.data}]
+
+		const aWallets = await axios.get('/allwallets')
+		this.allWallets = aWallets.data
 	}
 }
 </script>
