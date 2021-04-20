@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <div class="home">
-    <h1>Evolution de votre portefeuille</h1>
+    <h1>Valorisation de vos portefeuille en euros</h1>
     <div class="chart">
       <HomeChart/>
     </div>
