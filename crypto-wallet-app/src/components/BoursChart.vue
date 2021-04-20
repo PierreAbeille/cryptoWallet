@@ -30,14 +30,14 @@ export default {
 				yaxis: {
 					forceNiceScale: true,
 					decimalsInFloat: 2,
-					labels: {
-            formatter: function (val) {
-              return (val / 1000).toFixed(0);
-            }
-					},
+					// labels: {
+          //   formatter: function (val) {
+          //     return (val / 1000).toFixed(0);
+          //   }
+					// },
 					title: {
-						text: 'Prix en Milliers d\'euros'
-						},
+						text: 'Prix en euros'
+					},
 					opposite: true
 				},
 				zoom: {
@@ -46,7 +46,7 @@ export default {
           autoScaleYaxis: true
         },
         toolbar: {
-          tools: {
+					tools: {
 						download: false,
 						pan: false,
 						zoom: false,
@@ -54,16 +54,16 @@ export default {
         },
 				colors: ['#42b983'],
 				noData: {
-    			text: 'Sélectionnez une cryptomonnaie de votre portefeuille à afficher'
+    			text: 'Sélectionnez une cryptomonnaie à afficher'
   			},
 				dataLabels: {
 					enabled : false
 				},
 				tooltip: {
-          x: {
-            format: 'dd MMM yyyy'
-          }
-        },
+        	x: {
+          	format: 'dd MMM yyyy'
+        	}
+      	},
 				stroke: {
           curve: 'smooth'
         },
@@ -79,8 +79,7 @@ export default {
 					data: []
 			}],
 			asset: '',
-			allWallets: [],
-			showChart: false,
+			allWallets: []
     }
   },
 
@@ -91,7 +90,7 @@ export default {
 
 	methods: {
 		async loadCrypto () {
-			const response = await axios.get('/graphique/'+this.asset.toLowerCase())
+			const response = await axios.get('/graphiqueG/'+this.asset.toLowerCase())
 			this.series = [{data : response.data}]
 		}
 	},
@@ -104,26 +103,26 @@ export default {
 	}
 
 	form {
-		height: 30%;
-		margin-bottom: 2vh;
+		height: 20%;
+		margin-bottom: 0.5vh;
 	}
 
 	select {
-    width: 100%;
+    width: 60%;
     border-radius: 5px;
-		padding: 0.7vh 0;
-		margin-bottom: 2vh;
-  }
+		padding: 0.8vh 0;
+		margin-bottom: 1vh;
+		margin-right: 10%;
+    }
 
 	input[type="submit"] {
-		width: 100%;
+		width: 30%;
 		cursor: pointer;
 		border: none;
     border-radius: 5px;
     background-color: #42b983;
     color: #fff;
-    padding: 
-		1vh 0;
+    padding: 1vh 0;
 	}
 
 	#thisComponentChart {

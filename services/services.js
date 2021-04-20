@@ -186,7 +186,7 @@ app.get('/graphique/:asset', async function(req,res){
 					}else{  //Ajoute le dernier prix connu pour avoir un graphique complet
 						tabajouter = {x: new Date(date1), y:stockasset[varloop-1]}
 						tabxy.push(tabajouter)
-					}
+					}0
 					
 				}
 				//Et ça c'est pour multiplier le nombre d'actifs que j'ai par son prix au jour J
@@ -198,6 +198,24 @@ app.get('/graphique/:asset', async function(req,res){
 				console.log(error)
 			}
 		})			
+})
+
+app.get('/graphiqueG/:asset', async function (req, res) {
+	try{
+		//Récupérer la monnaie et son historique
+		let historic = await getAllHistoricByName(req.params.asset)
+
+		let tabAdd = {}
+		let tabXY = []
+
+		for (let index = 0; index < historic.data.prices.length; index++) {
+			tabAdd = {x : historic.data.prices[index][0], y : historic.data.prices[index][1]}
+			tabXY.push(tabAdd)
+		}
+		res.json(tabXY)
+	}catch(error){
+		console.log(error);
+	}
 })
 
 http.listen(port, function(){

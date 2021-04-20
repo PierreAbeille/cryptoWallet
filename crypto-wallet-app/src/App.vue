@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 import Nav from '@/components/Nav.vue'
 import Wallet from '@/components/Wallet.vue'
 
