@@ -56,12 +56,14 @@ export default {
 				console.log(response)
 				console.log('acheter')
 				console.log(form)
+				alert('Achat effectué, pensez à actualiser la page')
 			} else {
 				// requete pour vendre
 				const response = await axios.post('/withdraw', form)
 				console.log(response)
 				console.log('vendre')
 				console.log(form)
+				alert('Vente effectuée, pensez à actualiser la page')
 			}
 		}
 	}
