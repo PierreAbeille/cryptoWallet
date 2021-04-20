@@ -93,8 +93,8 @@ export default {
   }
 
   .chart {
-    border: 1px solid #000;
-    height: 50vh;
+    /* border: 1px solid #000; */
+    height: 40vh;
     margin-bottom: 5vh;
   }
 </style>
